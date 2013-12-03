@@ -5,7 +5,7 @@
         versionCode = "10"
         version     = "1.1.0">
 
-    <name>AppBooster Demo</name>
+    <name>AB Demo</name>
 
     <description>
         A simple demo for AppBooster PUSH content service.
