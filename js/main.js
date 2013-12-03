@@ -49,8 +49,8 @@ var app = {
         }
 
         //self.registerEvents();
-        self.showAlert('Application Ready.', 'Information');
-        self.renderHomeView();
+        //self.showAlert('Application Ready.', 'Information');
+        //self.renderHomeView();
 
     }
 
