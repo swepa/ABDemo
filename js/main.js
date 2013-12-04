@@ -8,12 +8,49 @@ var app = {
         }
     },
 
+    showCampaigns: function(event) {
+        //event.preventDefault();
+        app.showAlert("Show Campaigns link clicked.", "Information");
+        //console.log('addLocation');
+
+        return false;
+    },
+
     renderHomeView: function() {
+        var content = "";
+
+        $.ajax({
+            url      : 'https://s3.amazonaws.com/Blobs/OpenRatio',
+            dataType : 'json',
+            async: false,
+            success  : function (data) {
+                //alert("I Got data.....");
+                //alert(data);
+                //alert(data.compaignTitle);
+                //alert(data.compaignDescription);
+                //$('#content').html(data);
+                //var obj = $.parseJSON( data );
+
+                for (var i = 0, len = data.length; i < len; i++) {
+                    //alert(data[i]);
+                    //alert(data[i].campaignTitle);
+                    //alert(data[i].campaignDescription);
+                    content = content + data[i].campaignTitle + "<br />";
+                    content = content + data[i].campaignDescription + "<br />";
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                app.showAlert("Something went wrong while fetching content of this app.", "Error");
+                app.showAlert(jqXHR.responseText + "-" + textStatus + "-" + errorThrown, "Error Information");
+                //$("#message").html(jqXHR.responseText + "-" + textStatus + "-" + errorThrown);
+                //var obj = $.parseJSON( jqXHR.responseText );
+                //$("#message").html(obj.message);
+            },
+        });
         var html =
             "<div class='header'><h1>AppBooster Demo</h1></div>" +
                 "<div class='search-view'>" +
-                "<a href='#'>Home</a><br />" +
-                "<a href='#' class='show-content'>Show Content</a>" +
+                content  +
                 "</div>"
         $('body').html(html);
     },
@@ -43,14 +80,15 @@ var app = {
 
             //self.registerEvents();
             //self.initializeStore();
+
             self.showAlert('Device Ready.', 'Information');
             self.renderHomeView();
 
         }
 
         //self.registerEvents();
-        //self.showAlert('Application Ready.', 'Information');
-        //self.renderHomeView();
+        self.showAlert('Application Ready.', 'Information');
+        self.renderHomeView();
 
     }
 
