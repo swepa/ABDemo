@@ -35,8 +35,8 @@ var app = {
                     //alert(data[i]);
                     //alert(data[i].campaignTitle);
                     //alert(data[i].campaignDescription);
-                    content = content + data[i].campaignTitle + "<br />";
-                    content = content + data[i].campaignDescription + "<br />";
+                    content = content + "<h1>" +data[i].campaignTitle + "</h1>";
+                    content = content + "<h2>" + data[i].campaignDescription + "</h2>";
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -87,8 +87,8 @@ var app = {
         }
 
         //self.registerEvents();
-        self.showAlert('Application Ready.', 'Information');
-        self.renderHomeView();
+        //self.showAlert('Application Ready.', 'Information');
+        //self.renderHomeView();
 
     }
 
