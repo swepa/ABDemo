@@ -11,7 +11,7 @@ var app = {
     renderHomeView: function() {
         var content = "";
         this.showAlert('Loading your latest campaigns from AppBooster.', 'Information');
-        this.showAlert('2nd call.', 'Information');
+        //this.showAlert('2nd call.', 'Information');
         $.ajax({
             url      : 'https://s3.amazonaws.com/Blobs/OpenRatio',
             dataType : 'json',
@@ -34,7 +34,7 @@ var app = {
             }
         });
 
-        this.showAlert('Call finish.', 'Information');
+        //this.showAlert('Call finish.', 'Information');
         var html =
             "<div class='header'><h1>AppBooster Demo</h1></div>" +
                 "<div class='search-view'>" +
