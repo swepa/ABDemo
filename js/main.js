@@ -10,7 +10,7 @@ var app = {
 
     renderHomeView: function() {
         var content = "";
-        this.showAlert('Loading your latest campaigns.', 'Information');
+        this.showAlert('Loading your latest campaigns from AppBooster.', 'Information');
         $.ajax({
             url      : 'https://s3.amazonaws.com/Blobs/OpenRatio',
             dataType : 'json',
@@ -27,6 +27,9 @@ var app = {
             error: function (jqXHR, textStatus, errorThrown) {
                 app.showAlert("Something went wrong while fetching content of this app.", "Error");
                 app.showAlert(jqXHR.responseText + "-" + textStatus + "-" + errorThrown, "Error Information");
+            },
+            done: function (data){
+                app.showAlert("Done is called..", "Information");
             },
         });
         var html =
