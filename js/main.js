@@ -8,31 +8,16 @@ var app = {
         }
     },
 
-    showCampaigns: function(event) {
-        //event.preventDefault();
-        app.showAlert("Show Campaigns link clicked.", "Information");
-        //console.log('addLocation');
-
-        return false;
-    },
-
     renderHomeView: function() {
         var content = "";
-
+        self.showAlert('Loading your latest campaigns.', 'Information');
         $.ajax({
             url      : 'https://s3.amazonaws.com/Blobs/OpenRatio',
             dataType : 'json',
             async: false,
             success  : function (data) {
-                //alert("I Got data.....");
-                //alert(data);
-                //alert(data.compaignTitle);
-                //alert(data.compaignDescription);
-                //$('#content').html(data);
-                //var obj = $.parseJSON( data );
 
                 for (var i = 0, len = data.length; i < len; i++) {
-                    //alert(data[i]);
                     //alert(data[i].campaignTitle);
                     //alert(data[i].campaignDescription);
                     content = content + "<h1>" +data[i].campaignTitle + "</h1>";
@@ -42,9 +27,6 @@ var app = {
             error: function (jqXHR, textStatus, errorThrown) {
                 app.showAlert("Something went wrong while fetching content of this app.", "Error");
                 app.showAlert(jqXHR.responseText + "-" + textStatus + "-" + errorThrown, "Error Information");
-                //$("#message").html(jqXHR.responseText + "-" + textStatus + "-" + errorThrown);
-                //var obj = $.parseJSON( jqXHR.responseText );
-                //$("#message").html(obj.message);
             },
         });
         var html =
@@ -55,25 +37,12 @@ var app = {
         $('body').html(html);
     },
 
-    findByName: function() {
-        console.log('findByName');
-        this.store.findByName($('.search-key').val(), function(employees) {
-            var l = employees.length;
-            var e;
-            $('.employee-list').empty();
-            for (var i=0; i<l; i++) {
-                e = employees[i];
-                $('.employee-list').append('<li><a href="#employees/' + e.id + '">' + e.firstName + ' ' + e.lastName + '</a></li>');
-            }
-        });
-    },
-
     initialize: function() {
 
         var self = this;
         document.addEventListener("deviceready", onDeviceReady, false);
         // device APIs are available
-        //
+
         function onDeviceReady() {
             // Empty
             //alert("device is ready, going to initilize Store.");
@@ -81,9 +50,8 @@ var app = {
             //self.registerEvents();
             //self.initializeStore();
 
-            self.showAlert('Device Ready.', 'Information');
+            //self.showAlert('Device Ready.', 'Information');
             self.renderHomeView();
-
         }
 
         //self.registerEvents();
