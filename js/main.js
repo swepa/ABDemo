@@ -10,7 +10,7 @@ var app = {
 
     renderHomeView: function() {
         var content = "";
-        self.showAlert('Loading your latest campaigns.', 'Information');
+        this.showAlert('Loading your latest campaigns.', 'Information');
         $.ajax({
             url      : 'https://s3.amazonaws.com/Blobs/OpenRatio',
             dataType : 'json',
