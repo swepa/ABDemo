@@ -11,7 +11,7 @@ var app = {
     renderHomeView: function() {
         var content = "";
         //var app = this;
-        app.showAlert('Loading your latest campaigns from AppBooster Edit Info123.', 'Information');
+        app.showAlert('Loading your latest campaigns from AppBooster Hybrid enable..', 'Information');
         //this.showAlert('2nd call.', 'Information');
         $.ajax({
             url      : 'https://s3.amazonaws.com/Blobs/OpenRatio',
